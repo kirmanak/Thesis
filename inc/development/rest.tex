@@ -1,0 +1,81 @@
+\subsection{Описание REST API веб-сервиса}
+В этом разделе содержится перечисление всех вызовов HTTP REST API, которые поддерживает веб-сервис.
+
+\begin{table}[h!]
+    \caption{Описание запроса POST /api/v1/kubernetes/\{namespace\}/\{deployment\}/}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & POST \\
+        \hline
+        Адрес & /api/v1/kubernetes/\{namespace\}/\{deployment\}/ \\
+        \hline
+        Параметры запроса & { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        namespace & String & Namespace, к которому относится приложение. \\
+        \hline
+        deployment & String & Deployment, к которому относится приложение. \\
+        \end{tabularx} } \\
+        \hline
+        Тело запроса & Конфигурация подключения к ''Kubernetes'' в формате YAML.
+        Эта конфигурация ещё называется ''kube config''. \\
+    \end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+    \caption{Описание запроса POST /api/v1/opennebula/}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & POST \\
+        \hline
+        Адрес & /api/v1/opennebula/ \\
+        \hline
+        Тело запроса & Тело запроса передаётся в формате JSON. { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        address & String & URL, по которому находится XML RPC API OpenNebula, к которой осуществляется подключение. \\
+        \hline
+        login & String & Логин пользователя, с которым осуществляется подключение. \\
+        \hline
+        password & String & Пароль пользователя, с которым осуществляется подключение. \\
+        \hline
+        password & String & Пароль пользователя, с которым осуществляется подключение. \\
+        \hline
+        role & int64 & Идентификатор роли, к которой относятся ВМ управляемого приложения. \\
+        \hline
+        template & int64 & Идентификатор шаблона, по которому создаются новые ВМ управляемого приложения. \\
+        \hline
+        vmgroup & int64 & Идентификатор группы ВМ, в котороую входят ВМ управляемого приложения. \\
+        \end{tabularx} } \\
+    \end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+    \caption{Описание запроса PUT /api/v1/opennebula/\{id\}/}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & PUT  \\
+        \hline
+        Адрес & /api/v1/opennebula/\{id\}/ \\
+        \hline
+        Тело запроса & Тело запроса передаётся в формате JSON. { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        address & String & URL, по которому находится XML RPC API OpenNebula, к которой осуществляется подключение. \\
+        \hline
+        login & String & Логин пользователя, с которым осуществляется подключение. \\
+        \hline
+        password & String & Пароль пользователя, с которым осуществляется подключение. \\
+        \hline
+        password & String & Пароль пользователя, с которым осуществляется подключение. \\
+        \hline
+        role & int64 & Идентификатор роли, к которой относятся ВМ управляемого приложения. \\
+        \hline
+        template & int64 & Идентификатор шаблона, по которому создаются новые ВМ управляемого приложения. \\
+        \hline
+        vmgroup & int64 & Идентификатор группы ВМ, в котороую входят ВМ управляемого приложения. \\
+        \end{tabularx} } \\
+        Параметры запроса & { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        id & int64 & Идентификатор конфигурации OpenNebula приложения, которая должна быть обновлена. \\
+        \end{tabularx} } \\
+    \end{tabularx}
+\end{table}
