@@ -1,8 +1,25 @@
 \subsection{Описание REST API веб-сервиса}
 В этом разделе содержится перечисление всех вызовов HTTP REST API, которые поддерживает веб-сервис.
 
-\begin{table}[h!]
-    \caption{Описание запроса POST /api/v1/kubernetes/\{namespace\}/\{deployment\}/}
+Передать для сохранения параметры подключения к приложению под управлением ''Kubernetes'' можно с помощью запроса, описание которого приведено в табл.~\ref{create-kubernetes}.
+
+Передать для сохранения параметры подключения к приложению под управлением ''OpenNebula'' можно с помощью запроса, описание которого приведено в табл.~\ref{create-opennebula}.
+
+Обновить параметры ранее созданного подключения к приложению под управлением ''OpenNebula'' можно с помощью запроса, описание которого приведено в табл.~\ref{update-opennebula}.
+
+Обновить параметры ранее созданного подключения к приложению под управлением ''Kubernetes'' можно с помощью запроса, описание которого приведено в табл.~\ref{update-opennebula}.
+
+Запросить список приложений, параметры подключения к которым сохранены в СУБД, можно с помощью запроса, описание которого приведено в табл.~\ref{get-apps}.
+
+Удалить ранее сохранённые параметры подключения к приложению вне зависимости от платформы, под управлением которой оно находится, можно с помощью запроса, описание которого приведено в табл.~\ref{delete-app}.
+
+Запросить список ВМ или контейнеров относящихся к приложению, параметры подключения к которому ранее были сохранены, вне зависимости от платформы, под управлением которой оно находится, а так же статистическую информацию об использованных ими ресурсах, можно с помощью запроса, описание которого приведено в табл.~\ref{get-app}.
+
+Осуществить масштабирование приложения, параметры подключения к которому ранее были сохранены, вне зависимости от платформы, под управлением которой оно находится, можно с помощью запроса, описание которого приведено в табл.~\ref{scale-app}.
+
+\begin{table}[hbtp]
+    \caption{Описание запроса сохранения параметров подключения к ''Kubernetes''-приложению}
+    \label{create-kubernetes}
     \begin{tabularx}{\textwidth}{l X}
         Метод & POST \\
         \hline
@@ -17,12 +34,92 @@
         \end{tabularx} } \\
         \hline
         Тело запроса & Конфигурация подключения к ''Kubernetes'' в формате YAML.
-        Эта конфигурация ещё называется ''kube config''. \\
     \end{tabularx}
 \end{table}
 
-\begin{table}[h!]
-    \caption{Описание запроса POST /api/v1/opennebula/}
+\begin{table}[hbtp]
+    \caption{Описание запроса обновления сохранённых параметров подключения к ''Kubernetes''-приложению}
+    \label{update-kubernetes}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & PUT \\
+        \hline
+        Адрес & /api/v1/kubernetes/\{namespace\}/\{deployment\}/\{id\}/ \\
+        \hline
+        Параметры запроса & { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        namespace & String & Namespace, к которому относится приложение. \\
+        \hline
+        deployment & String & Deployment, к которому относится приложение. \\
+        \hline
+        id & int64 & Идентификатор существующей конфигурации, которая должна быть обновлена. \\
+        \end{tabularx} } \\
+        \hline
+        Тело запроса & Конфигурация подключения к ''Kubernetes'' в формате YAML.
+    \end{tabularx}
+\end{table}
+
+\begin{table}[hbtp]
+    \caption{Описание запроса списка сохранённых приложений}
+    \label{get-apps}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & GET \\
+        \hline
+        Адрес & /api/v1/app \\
+    \end{tabularx}
+\end{table}
+
+\begin{table}[hbtp]
+    \caption{Описание запроса удаления сохранённого приложения}
+    \label{delete-app}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & DELETE \\
+        \hline
+        Адрес & /api/v1/app/\{id\} \\
+        \hline
+        Параметры запроса & { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        id & int64 & Идентификатор удаляемого приложения. \\
+        \end{tabularx} } \\
+    \end{tabularx}
+\end{table}
+
+\begin{table}[hbtp]
+    \caption{Описание запроса состояния сохранённого приложения}
+    \label{get-app}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & GET \\
+        \hline
+        Адрес & /api/v1/app/\{id\} \\
+        \hline
+        Параметры запроса & { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        id & int64 & Идентификатор приложения, состояние которого должно быть возвращено. \\
+        \end{tabularx} } \\
+    \end{tabularx}
+\end{table}
+
+\begin{table}[hbtp]
+    \caption{Описание запроса масштабирования приложения}
+    \label{scale-app}
+    \begin{tabularx}{\textwidth}{l X}
+        Метод & PATCH \\
+        \hline
+        Адрес & /api/v1/app/\{id\} \\
+        \hline
+        Тело запроса & Тело запроса передаётся в формате JSON. { \begin{tabularx}{\linewidth}{l c X}
+        \textbf{Имя} & \textbf{Тип} & \textbf{Описание} \\
+        \hline
+        incrementBy & int64 & Количество ВМ или контейнеров, на которое должно быть увеличены доступные приложению ресурсы. В случае, если число отрицательное, такое количество ВМ или контейнеров приложения будет отключено. \\
+        \end{tabularx} } \\
+    \end{tabularx}
+\end{table}
+
+\begin{table}[hbtp]
+    \caption{Описание запроса сохранения параметров подключения к ''OpenNebula''-приложению}
+    \label{create-opennebula}
     \begin{tabularx}{\textwidth}{l X}
         Метод & POST \\
         \hline
@@ -48,8 +145,9 @@
     \end{tabularx}
 \end{table}
 
-\begin{table}[h!]
-    \caption{Описание запроса PUT /api/v1/opennebula/\{id\}/}
+\begin{table}[hbtp]
+    \caption{Описание запроса обновления параметров подключения к ''OpenNebula''-приложению}
+    \label{update-opennebula}
     \begin{tabularx}{\textwidth}{l X}
         Метод & PUT  \\
         \hline
@@ -79,3 +177,5 @@
         \end{tabularx} } \\
     \end{tabularx}
 \end{table}
+
+\FloatBarrier
