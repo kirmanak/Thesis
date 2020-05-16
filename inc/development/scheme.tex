@@ -11,14 +11,13 @@
 Описание полей сущности представлено в табл.~\ref{db-scheme-one}.
 
 \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=13cm]{img/db-scheme.pdf}
     \caption{Схема базы данных}
     \label{db-scheme}
-    \includegraphics[width=13cm]{img/db-scheme.pdf}
 \end{figure}
 
 \begin{table}[hbtp]
-    \caption{Описание полей сущности ''application\_entity''}
-    \label{db-scheme-app}
     \begin{tabularx}{\linewidth}{l X}
         \textbf{Имя} & \textbf{Описание} \\
         \hline
@@ -28,11 +27,11 @@
         \hline
         open\_nebula\_config & Первичный ключ сущности ''open\_nebula\_config\_entity'' для связи приложения и его конфигурации в системе ''OpenNebula''. Может отсутствовать, если это приложение сконфигурировано в ''Kubernetes''. \\
     \end{tabularx}
+    \caption{Описание полей сущности ''application\_entity''}
+    \label{db-scheme-app}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание полей сущности ''kubernetes\_config\_entity''}
-    \label{db-scheme-kub}
     \begin{tabularx}{\linewidth}{l X}
         \textbf{Имя} & \textbf{Описание} \\
         \hline
@@ -44,11 +43,11 @@
         \hline
         yaml & Конфигурация подключения к API ''Kubernetes'' в формате ''YAML'', эту конфигурацию ещё называют ''kube config''. \\
     \end{tabularx}
+    \caption{Описание полей сущности ''kubernetes\_config\_entity''}
+    \label{db-scheme-kub}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание полей сущности ''open\_nebula\_config\_entity''}
-    \label{db-scheme-one}
     \begin{tabularx}{\linewidth}{l X}
         \textbf{Имя} & \textbf{Описание} \\
         \hline
@@ -66,6 +65,8 @@
         \hline
         vmgroup & Идентификатор группы ВМ, к которой относится управляемое приложение. \\
     \end{tabularx}
+    \caption{Описание полей сущности ''open\_nebula\_config\_entity''}
+    \label{db-scheme-one}
 \end{table}
 
 \FloatBarrier

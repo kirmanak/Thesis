@@ -15,8 +15,6 @@
 Удалить ранее сохранённые параметры подключения к приложению вне зависимости от платформы, под управлением которой оно находится, можно с помощью запроса, описание которого приведено в табл.~\ref{delete-app}.
 
 \begin{table}[hbtp]
-    \caption{Описание запроса сохранения параметров подключения к ''Kubernetes''-приложению}
-    \label{create-kubernetes}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & POST \\
         \hline
@@ -32,11 +30,11 @@
         \hline
         Тело запроса & Конфигурация подключения к ''Kubernetes'' в формате YAML.
     \end{tabularx}
+    \caption{Описание запроса сохранения параметров подключения к ''Kubernetes''-приложению}
+    \label{create-kubernetes}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание запроса обновления сохранённых параметров подключения к ''Kubernetes''-приложению}
-    \label{update-kubernetes}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & PUT \\
         \hline
@@ -54,21 +52,21 @@
         \hline
         Тело запроса & Конфигурация подключения к ''Kubernetes'' в формате YAML.
     \end{tabularx}
+    \caption{Описание запроса обновления сохранённых параметров подключения к ''Kubernetes''-приложению}
+    \label{update-kubernetes}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание запроса списка сохранённых приложений}
-    \label{get-apps}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & GET \\
         \hline
         Адрес & /api/v1/app \\
     \end{tabularx}
+    \caption{Описание запроса списка сохранённых приложений}
+    \label{get-apps}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание запроса удаления сохранённого приложения}
-    \label{delete-app}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & DELETE \\
         \hline
@@ -80,14 +78,14 @@
         id & int64 & Идентификатор удаляемого приложения. \\
         \end{tabularx} } \\
     \end{tabularx}
+    \caption{Описание запроса удаления сохранённого приложения}
+    \label{delete-app}
 \end{table}
 
 Запросить список ВМ или контейнеров относящихся к приложению, параметры подключения к которому ранее были сохранены, вне зависимости от платформы, под управлением которой оно находится, а так же статистическую информацию об использованных ими ресурсах, можно с помощью запроса, описание которого приведено в табл.~\ref{get-app}.
 
 Осуществить масштабирование приложения, параметры подключения к которому ранее были сохранены, вне зависимости от платформы, под управлением которой оно находится, можно с помощью запроса, описание которого приведено в табл.~\ref{scale-app}.
 \begin{table}[hbtp]
-    \caption{Описание запроса состояния сохранённого приложения}
-    \label{get-app}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & GET \\
         \hline
@@ -99,11 +97,11 @@
         id & int64 & Идентификатор приложения, состояние которого должно быть возвращено. \\
         \end{tabularx} } \\
     \end{tabularx}
+    \caption{Описание запроса состояния сохранённого приложения}
+    \label{get-app}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание запроса масштабирования приложения}
-    \label{scale-app}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & PATCH \\
         \hline
@@ -115,11 +113,11 @@
         incrementBy & int64 & Количество ВМ или контейнеров, на которое должно быть увеличены доступные приложению ресурсы. В случае, если число отрицательное, такое количество ВМ или контейнеров приложения будет отключено. \\
         \end{tabularx} } \\
     \end{tabularx}
+    \caption{Описание запроса масштабирования приложения}
+    \label{scale-app}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание запроса сохранения параметров подключения к ''OpenNebula''-приложению}
-    \label{create-opennebula}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & POST \\
         \hline
@@ -143,11 +141,11 @@
         vmgroup & int64 & Идентификатор группы ВМ, в котороую входят ВМ управляемого приложения. \\
         \end{tabularx} } \\
     \end{tabularx}
+    \caption{Описание запроса сохранения параметров подключения к ''OpenNebula''-приложению}
+    \label{create-opennebula}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание запроса обновления параметров подключения к ''OpenNebula''-приложению}
-    \label{update-opennebula}
     \begin{tabularx}{\textwidth}{l | X}
         Метод & PUT  \\
         \hline
@@ -177,6 +175,8 @@
         id & int64 & Идентификатор конфигурации OpenNebula приложения, которая должна быть обновлена. \\
         \end{tabularx} } \\
     \end{tabularx}
+    \caption{Описание запроса обновления параметров подключения к ''OpenNebula''-приложению}
+    \label{update-opennebula}
 \end{table}
 
 \FloatBarrier
@@ -187,8 +187,6 @@
 Описание общего формата ошибки приведено в табл.~\ref{general-error}.
 
 \begin{table}[hbtp]
-    \caption{Описание общего для всех запросов формата описания ошибки}
-    \label{general-error}
     \begin{tabularx}{\textwidth}{l | X}
         Код ответа & {
             \begin{tabularx}{\linewidth}{l | X}
@@ -219,13 +217,13 @@
             \end{tabularx}
         } \\
     \end{tabularx}
+    \caption{Описание общего для всех запросов формата описания ошибки}
+    \label{general-error}
 \end{table}
 
 Ответ на запрос сохранения параметров вне зависимости от платформы, параметры подключения к которой были сохранены, а так же ответ на запрос удаления приложения описан в табл.~\ref{create-delete-response}.
 
 \begin{table}[hbtp]
-    \caption{Описание ответа на запросы сохранения и удаления параметров подключения в случае успеха проведения операции}
-    \label{create-delete-response}
     \begin{tabularx}{\textwidth}{l | X}
         Код ответа & 200 \\
         \hline
@@ -238,6 +236,8 @@
             \end{tabularx}
         } \\
     \end{tabularx}
+    \caption{Описание ответа на запросы сохранения и удаления параметров подключения в случае успеха проведения операции}
+    \label{create-delete-response}
 \end{table}
 
 Ответ на запрос списка сохранённых приложений, то есть списка известных параметров подключения к приложениям, описан в табл.~\ref{get-apps-response}.
@@ -248,16 +248,14 @@
 Формат ответа описан в табл.~\ref{update-response}.
 
 \begin{table}[hbtp]
-    \caption{Описание ответа на запрос обновления конфигурации}
-    \label{update-response}
     \begin{tabularx}{\textwidth}{p{0.2\textwidth} | X}
         Код ответа & 200 \\
     \end{tabularx}
+    \caption{Описание ответа на запрос обновления конфигурации}
+    \label{update-response}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание ответа на запрос списка сохранённых приложений}
-    \label{get-apps-response}
     \begin{tabularx}{\textwidth}{p{0.2\textwidth} | X}
         Код ответа & 200 \\
         \hline
@@ -302,11 +300,11 @@
             \end{tabularx}
         } \\
     \end{tabularx}
+    \caption{Описание ответа на запрос списка сохранённых приложений}
+    \label{get-apps-response}
 \end{table}
 
 \begin{table}[hbtp]
-    \caption{Описание ответа на запросы состояния и масштабирования приложения}
-    \label{get-app-response}
     \begin{tabularx}{\textwidth}{p{0.2\textwidth} | X}
         Код ответа & 200 \\
         \hline
@@ -330,6 +328,8 @@
             \end{tabularx}
         } \\
     \end{tabularx}
+    \caption{Описание ответа на запросы состояния и масштабирования приложения}
+    \label{get-app-response}
 \end{table}
 
 \FloatBarrier

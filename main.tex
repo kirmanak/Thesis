@@ -1,4 +1,8 @@
 \input{preamble.tex}
+\regtotcounter{page}
+\regtotcounter{figure}
+\regtotcounter{table}
+\regtotcounter{enumiv}
 \begin{document}
 \LetLtxMacro{\oldref}{\ref}
 \renewcommand{\ref}[1]{\oldref{#1} на стр.~\pageref{#1}}
@@ -9,7 +13,7 @@
 \clearpage
 \input{inc/management/management.tex}
 \clearpage
-\input{inc/development/requirements.tex}
+\input{inc/approach/approach.tex}
 \clearpage
 \input{inc/development/development.tex}
 \clearpage
