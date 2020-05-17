@@ -1,15 +1,3 @@
-package ru.ifmo.kirmanak.elasticappclient.kubernetes
-
-import io.kubernetes.client.openapi.ApiClient
-import io.kubernetes.client.openapi.ApiException
-import io.kubernetes.client.openapi.apis.AppsV1Api
-import io.kubernetes.client.openapi.apis.CoreV1Api
-import io.kubernetes.client.openapi.models.V1Deployment
-import io.kubernetes.client.openapi.models.V1Scale
-import ru.ifmo.kirmanak.elasticappclient.AppClient
-import ru.ifmo.kirmanak.elasticappclient.AppClientException
-import ru.ifmo.kirmanak.elasticappclient.AppInstance
-
 private const val DEPLOYMENT_SELECTOR = "app"
 
 open class KubernetesClient(

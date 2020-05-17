@@ -1,10 +1,3 @@
-package ru.ifmo.kirmanak.elasticappclient
-
-import io.kubernetes.client.openapi.ApiClient
-import org.opennebula.client.Client
-import ru.ifmo.kirmanak.elasticappclient.kubernetes.KubernetesClient
-import ru.ifmo.kirmanak.elasticappclient.opennebula.OpenNebulaClient
-
 open class AppClientFactory {
     companion object {
         @JvmStatic

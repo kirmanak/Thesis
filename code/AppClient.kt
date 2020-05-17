@@ -1,5 +1,3 @@
-package ru.ifmo.kirmanak.elasticappclient
-
 /**
  * Interface to access elastic application working in a virtualized infrastructure.
  */

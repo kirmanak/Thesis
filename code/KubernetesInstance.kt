@@ -1,11 +1,3 @@
-package ru.ifmo.kirmanak.elasticappclient.kubernetes
-
-import io.kubernetes.client.openapi.models.V1Pod
-import ru.ifmo.kirmanak.elasticappclient.AppClientException
-import ru.ifmo.kirmanak.elasticappclient.AppInstance
-import ru.ifmo.kirmanak.elasticappclient.kubernetes.models.MetricsV1Beta1PodMetrics
-import java.util.concurrent.atomic.DoubleAdder
-
 internal data class KubernetesInstance(
     private val name: String,
     private val CPULoad: Double,

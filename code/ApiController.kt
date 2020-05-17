@@ -1,25 +1,3 @@
-package ru.ifmo.kirmanak.manager.controllers
-
-import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.dao.DataIntegrityViolationException
-import org.springframework.data.repository.findByIdOrNull
-import org.springframework.web.bind.annotation.*
-import ru.ifmo.kirmanak.elasticappclient.AppClient
-import ru.ifmo.kirmanak.elasticappclient.AppClientException
-import ru.ifmo.kirmanak.elasticappclient.AppInstance
-import ru.ifmo.kirmanak.manager.models.exceptions.ExistingApplicationException
-import ru.ifmo.kirmanak.manager.models.exceptions.InvalidAppConfigException
-import ru.ifmo.kirmanak.manager.models.exceptions.NoAppConnectionException
-import ru.ifmo.kirmanak.manager.models.exceptions.NoSuchApplicationException
-import ru.ifmo.kirmanak.manager.models.requests.OpenNebulaRequest
-import ru.ifmo.kirmanak.manager.models.requests.ScaleRequest
-import ru.ifmo.kirmanak.manager.models.responses.*
-import ru.ifmo.kirmanak.manager.storage.entities.AppConfiguration
-import ru.ifmo.kirmanak.manager.storage.entities.ApplicationEntity
-import ru.ifmo.kirmanak.manager.storage.entities.KubernetesConfigEntity
-import ru.ifmo.kirmanak.manager.storage.entities.OpenNebulaConfigEntity
-
 @RestController
 class ApiController {
     private val logger = LoggerFactory.getLogger(javaClass)

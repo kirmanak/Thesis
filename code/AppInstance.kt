@@ -1,5 +1,3 @@
-package ru.ifmo.kirmanak.elasticappclient
-
 /**
  * Interface to access elastic application instance information.
  * It is either a container or a virtual machine.

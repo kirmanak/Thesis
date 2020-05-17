@@ -2,11 +2,63 @@
 \section*{ПРИЛОЖЕНИЕ 1. ЛИСТИНГИ РАЗРАБОТАННЫХ ПРОГРАММНЫХ МОДУЛЕЙ}
 \end{center}
 \addcontentsline{toc}{section}{ПРИЛОЖЕНИЕ 1. ЛИСТИНГИ РАЗРАБОТАННЫХ \\ ПРОГРАММНЫХ МОДУЛЕЙ}
-\inputminted{kotlin}{inc/included/code/ApiController.kt}
-\inputminted{kotlin}{inc/included/code/AppClientFactory.kt}
-\inputminted{kotlin}{inc/included/code/AppClient.kt}
-\inputminted{kotlin}{inc/included/code/AppInstance.kt}
-\inputminted{kotlin}{inc/included/code/KubernetesClient.kt}
-\inputminted{kotlin}{inc/included/code/KubernetesInstance.kt}
-\inputminted{kotlin}{inc/included/code/OpenNebulaClient.kt}
-\inputminted{kotlin}{inc/included/code/OpenNebulaInstance.kt}
+В листинге~\ref{api-controller} представлен исходный код компонента ''Менеджер'', который обрабатывает запросы, получаемые от компонента ''REST API''. 
+Компонент ''REST API'' предоставлен фреймворком ''Spring''.
+\begin{longlisting}
+    \caption{Исходный код компонента ''Менеджер'' (ApiController.kt)}
+    \label{api-controller}
+    \inputminted{kotlin}{code/ApiController.kt}
+\end{longlisting}
+
+Листинг~\ref{client-factory} содержит исходный код фабрики объектов типа ''AppClient'', входящей в состав клиентской библиотеки.
+С помощью фабрики можно получить доступ к программному интерфейсу поддерживаемой платформы облачных вычислений, имея необходимые параметры подключения.
+\begin{longlisting}
+    \caption{Исходный код фабрики объектов ''AppClient'' (AppClientFactory.kt)}
+    \label{client-factory}
+    \inputminted{kotlin}{code/AppClientFactory.kt}
+\end{longlisting}
+
+Интерфейс ''AppClient'' представлен в листинге~\ref{client-interface}.
+Это унифицированный интерфейс, с помощью которого осуществляется взаимодействие с конкретной платформой облачных вычислений.
+\begin{longlisting}
+    \caption{Исходный код интерфейса ''AppClient'' (AppClient.kt)}
+    \label{client-interface}
+    \inputminted{kotlin}{code/AppClient.kt}
+\end{longlisting}
+
+
+Реализация описанного выше интерфейса ''AppClient'' для одной из интегрируемых платформ под названием ''Kubernetes'' представлена в листинге~\ref{kubernetes-client}.
+\begin{longlisting}
+    \caption{Исходный код реализации интерфейса ''AppClient'' для ''Kubernetes'' (KubernetesClient.kt)}
+    \label{kubernetes-client}
+    \inputminted{kotlin}{code/KubernetesClient.kt}
+\end{longlisting}
+
+Взаимодействие с ''OpenNebula'' осуществляется при помощи ''OpenNebulaClient'', представленного в листинге~\ref{opennebula-client}.
+\begin{longlisting}
+    \caption{Исходный код реализации интерфейса ''AppClient'' для ''OpenNebula'' (OpenNebulaClient.kt)}
+    \label{opennebula-client}
+    \inputminted{kotlin}{code/OpenNebulaClient.kt}
+\end{longlisting}
+
+Для получения доступа к статистике использования ресурсов каждым конкретным контейнером или виртуальной машиной используется интерфейс ''AppInstance''.
+Его исходный код представлен в листинге~\ref{instance-interface};
+\begin{longlisting}
+    \caption{Исходный код интерфейса ''AppInstance'' (AppInstance.kt)}
+    \label{instance-interface}
+    \inputminted{kotlin}{code/AppInstance.kt}
+\end{longlisting}
+
+Листинг~\ref{kubernetes-instance} содержит реализацию описанного ранее интерфейса ''AppInstance'' для ''Kubernetes''.
+\begin{longlisting}
+    \caption{Исходный код реализации интерфейса ''AppInstance'' для ''Kubernetes'' (KubernetesInstance.kt)}
+    \label{kubernetes-instance}
+    \inputminted{kotlin}{code/KubernetesInstance.kt}
+\end{longlisting}
+
+Сбор статистики использования ресурсов виртуальной машиной под управлением ''OpenNebula'' может быть осуществлён с помощью ''OpenNebulaInstance'', представленного в листинге~\ref{opennebula-instance}.
+\begin{longlisting}
+    \caption{Исходный код реализации интерфейса ''AppInstance'' для ''OpenNebula'' (OpenNebulaInstance.kt)}
+    \label{opennebula-instance}
+    \inputminted{kotlin}{code/OpenNebulaInstance.kt}
+\end{longlisting}
