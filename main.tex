@@ -4,9 +4,10 @@
 \regtotcounter{table}
 \regtotcounter{enumiv}
 \begin{document}
-\LetLtxMacro{\oldref}{\ref}
-\renewcommand{\ref}[1]{\oldref{#1} на стр.~\pageref{#1}}
+%\LetLtxMacro{\oldref}{\ref}
+%\renewcommand{\ref}[1]{\oldref{#1} на стр.~\pageref{#1}}
 \setcounter{page}{4}
+\renewcommand{\contentsname}{СОДЕРЖАНИЕ}
 \tableofcontents
 \clearpage
 \input{inc/required/introduction.tex}
