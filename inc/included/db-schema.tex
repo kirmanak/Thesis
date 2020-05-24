@@ -1,0 +1,56 @@
+\begin{center}
+\section*{ПРИЛОЖЕНИЕ 2. ОПИСАНИЕ СХЕМЫ БАЗЫ ДАННЫХ}
+\end{center}
+\addcontentsline{toc}{section}{ПРИЛОЖЕНИЕ 2. ОПИСАНИЕ СХЕМЫ БАЗЫ ДАННЫХ}
+
+\begin{table}[hbtp]
+    \caption{Описание полей сущности ''application\_entity''}
+    \begin{tabularx}{\linewidth}{l X}
+        \textbf{Имя} & \textbf{Описание} \\
+        \hline
+        id & Первичный ключ сущности, уникальное число для идентификации записи. \\
+        \hline
+        kubernetes\_config & Первичный ключ сущности ''kubernetes\_config\_entity'' для связи приложения и его конфигурации в системе ''Kubernetes''. Может отсутствовать, если это приложение сконфигурировано в ''OpenNebula''. \\
+        \hline
+        open\_nebula\_config & Первичный ключ сущности ''open\_nebula\_config\_entity'' для связи приложения и его конфигурации в системе ''OpenNebula''. Может отсутствовать, если это приложение сконфигурировано в ''Kubernetes''. \\
+    \end{tabularx}
+    \label{db-scheme-app}
+\end{table}
+
+\begin{table}[hbtp]
+    \caption{Описание полей сущности ''kubernetes\_config\_entity''}
+    \begin{tabularx}{\linewidth}{l X}
+        \textbf{Имя} & \textbf{Описание} \\
+        \hline
+        id & Первичный ключ сущности, уникальное число для идентификации записи. \\
+        \hline
+        namespace & Имя того namespace ''Kubernetes'', в котором развёрнуто управляемое приложение. \\
+        \hline
+        deployment & Имя того deployment ''Kubernetes'', к которому относится управляемое приложение. \\
+        \hline
+        yaml & Конфигурация подключения к API ''Kubernetes'' в формате ''YAML'', эту конфигурацию ещё называют ''kube config''. \\
+    \end{tabularx}
+    \label{db-scheme-kub}
+\end{table}
+
+\begin{table}[hbtp]
+    \caption{Описание полей сущности ''open\_nebula\_config\_entity''}
+    \begin{tabularx}{\linewidth}{l X}
+        \textbf{Имя} & \textbf{Описание} \\
+        \hline
+        id & Первичный ключ сущности, уникальное число для идентификации записи. \\
+        \hline
+        address & URL, по которому расположен XML RPC API платформы ''OpenNebula''. \\
+        \hline
+        login & Логин пользователя. \\
+        \hline
+        password & Пароль пользователя. \\
+        \hline
+        role & Идентификатор роли внутри группы ВМ, к которой относится управляемое приложение. \\
+        \hline
+        template & Идентификатор шаблона VM, согласно которому будут создаваться новые ВМ управляемого приложения. \\
+        \hline
+        vmgroup & Идентификатор группы ВМ, к которой относится управляемое приложение. \\
+    \end{tabularx}
+    \label{db-scheme-one}
+\end{table}
