@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+participant "Сервис автомасштабирования" as ext order 10
+participant "Сервис\nуправления" as out order 20
+participant "Администратор" as adm order 5
+
+== Начальная конфигурация ==
+adm -> ext: id: 5
+adm -> ext: id: 6
+== Осуществление масштабирования OpenNebula ==
+ext -> out: PATCH /api/v1/app/5\nincrementBy:1
+== Осуществление масштабирования Kubernetes ==
+ext -> out: PATCH /api/v1/app/6\nincrementBy:2
+@enduml
