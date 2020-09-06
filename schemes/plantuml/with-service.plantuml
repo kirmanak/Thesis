@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+participant "Администратор" as Admin order 10
+participant "Компонент\nуправления" as Platform order 5
+participant "Сервис\nуправления" as Manager order 40
+participant "Платформа\nвиртуализации" as Virt order 40
+
+== Сохранение параметров ==
+Admin -> Manager : {"login": "admin", \n"password": "123"}
+Manager -> Admin : {"id": 5}
+Admin -> Platform : {"id": 5"}
+
+== Осуществление масштабирования ==
+Platform -> Manager : {"id": 5, "addInstances": 2}
+Manager-> Virt : {"login": "admin", \n"password": "123", \n"addInstances": 2}
+Virt -> Manager : {"status": "OK"}
+Manager -> Platform : {"addedInstances": 2}
+@enduml

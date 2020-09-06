@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "open_nebula_config_entity" as on {
+  *id : number <<generated>>
+  --
+  *address : text
+  *login : text
+  *password : text
+  *role : number
+  *template : number
+  *vmgroup : number
+}
+
+entity "application_entity" as app {
+  *id : number <<generated>>
+  --
+  open_nebula_config : number <<FK>>
+  kubernetes_config : number <<FK>>
+}
+
+entity "kubernetes_config_entity" as kube {
+  *id : number <<generated>>
+  --
+  *namespace : text
+  *deployment : text
+  *yaml : text
+}
+
+app ||--o| kube
+app ||--o| on
+@enduml

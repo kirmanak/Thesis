@@ -1,0 +1,62 @@
+@startuml
+hide circle
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+together {
+ class "KubernetesClient" as kc {
+   -CoreV1APi coreApi
+   -MetricsV1Beta1Api metricsApi
+   -AppsV1Api appsApi
+   -String namespace
+   -String deployment
+   ~MetricsV1Beta1PodMetricsList getMetricsPerPod()
+   -V1Deployment getDeployment()
+   -V1PodList getPods(String)
+   -String getDeploymentSelector(V1Deployment)
+ }
+ class "AppClient" as ac {
+  +Array<AppInstance> getAppInstances()
+  +scaleInstances(Int)
+ }
+ class "OpenNebulaClient" as oc {
+  -Client client
+  -Int roleId
+  -Int templateId
+  -Int groupId
+  -List<VirtualMachine> getVirtualMachines()
+  -addInstances(Int)
+  -removeInstances(Int)
+  -Node getRole()
+  -Set<Int> getVMIdentifiers()
+  -Node? findRole()
+ }
+ kc -down-|> ac: Extends
+ oc -up-|> ac: Extends
+}
+together {
+ class "KubernetesInstance" as ki {
+  -String name
+  -Double CPULoad
+  -Double RAMLoad
+  +KubernetesInstance? create(V1Pod, KubernetesClient)
+  -Double? getUsage(String, String, KubernetesClient)
+  -MetricsV1Beta1PodMetrics? getPodMetrics(String, KubernetesClient)
+ }
+ class "AppInstance" as ai {
+  +Double getCPULoad()
+  +Double getRAMLoad()
+  +Double getName()
+ }
+ class "OpenNebulaInstance" as oi {
+  -String name
+  -Double cpuLoad
+  -Double memory
+  -Double getUsage(String, VirtualMachine)
+ }
+ ki -down-|> ai: Extends
+ oi -up-|> ai: Extends
+}
+ac "1..*" - "1" ai
+@enduml

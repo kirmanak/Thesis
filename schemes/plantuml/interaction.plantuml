@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+
+package "Платформа облачных вычислений" as Platform {
+  circle "Виртуальный сервер 1" as S1
+  circle "Виртуальный сервер 2" as S2
+  circle "Виртуальный сервер 3" as S3
+  [Встроенный\nсервис\nавтомасштабирования] as M1
+}
+
+node "Внешний\nсервис\nавтомасштабирования" as M2
+
+M2 <-right-> Platform
+@enduml

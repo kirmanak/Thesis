@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+
+package "Платформа облачных вычислений 1" as Platform1 {
+  [Программный интерфейс 1] as API1
+}
+
+package "Платформа облачных вычислений 2" as Platform2 {
+  [Программный интерфейс 2] as API2
+}
+
+package "Платформа облачных вычислений 3" as Platform3 {
+  [Программный интерфейс 3] as API3
+}
+
+node "Внешний\nсервис\nавтомасштабирования" as M1
+
+M1 <--up-> API1: Реализовано
+M1 <.right..> API2: Требует доработки
+M1 <.down.> API3: Требует доработки
+@enduml

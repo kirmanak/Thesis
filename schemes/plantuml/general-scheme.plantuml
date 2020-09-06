@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+rectangle "Сервис \nавтомасшта-\nбирования 1" as Caler1
+rectangle "Сервис \nавтомасшта-\nбирования 2" as Caler2
+rectangle "Сервис \nавтомасшта-\nбирования N" as CalerN
+rectangle "Сервис \nуправления" as API
+rectangle "Облачный \nпровайдер 1" as CS1
+rectangle "Облачный \nпровайдер 2" as CS2
+rectangle "Облачный \nпровайдер N" as CSN
+
+Caler1 --> API
+Caler2 --> API
+CalerN --> API
+
+API --> CS1
+API --> CS2
+API --> CSN
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+participant "Сервис\nавтомасштабирования" as ext order 10
+participant "Сервис\nуправления" as rest order 20
+participant "Администратор" as adm order 15
+participant "OpenNebula" as on order 40
+participant "Kubernetes" as ku order 50
+
+== Начальная конфигурация ==
+adm -> rest: POST /api/v1/opennebula\naddress:X,login:Y,password:Z,role:K...
+rest -> adm: id: 5
+adm -> ext: id: 5
+adm -> rest: POST /api/v1/kubernetes\nkubeconfig:C,namespace:N,deployment:D...
+rest -> adm: id: 6
+adm -> ext: id: 6
+== Осуществление масштабирования OpenNebula ==
+ext -> rest: PATCH /api/v1/app/5\nincrementBy:1
+rest -> on: подключиться с логином L, паролем P...
+on -> rest: соединение установлено
+rest -> on: создать ВМ в группе G по шаблону T...
+== Осуществление масштабирования Kubernetes ==
+ext -> rest: PATCH /api/v1/app/6\nincrementBy:2
+rest -> ku: подключиться с kubeconfig C...
+ku -> rest: соединение установлено
+rest -> ku: масштабировать deployment D в namespace N на 2
+@enduml

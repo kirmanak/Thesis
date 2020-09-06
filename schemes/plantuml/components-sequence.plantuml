@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+
+participant "Внешний\nкомпонент" as ext order 10
+participant "Веб-сервис" as web order 20
+participant "Библиотека" as lib order 30
+participant "Приложение" as app order 40
+database "СУБД" as db order 40
+
+
+ext->web: конфигурация подключения
+web->lib: запрос статистики
+lib->app: запросить список ВМ
+app->lib: список ВМ
+lib->web: статистика использования
+web->db: сохранить конфигурацию
+db->web: конфигурация сохранена
+web->ext: конфигурация сохранена
+ext->web: запрос статистики
+web->db: запрос конфигурации подключения
+db->web: конфигурация подключения
+web->lib: запрос статистики
+lib->app: запросить список ВМ
+app->lib: список ВМ
+lib->web: статистика использования
+web->ext: статистика использования
+@enduml

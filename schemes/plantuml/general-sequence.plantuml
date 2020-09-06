@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+participant "Сервис \nавтомасшта-\nбирования" as Caler order 10
+participant "Слой \nуправления" as API order 20
+participant "Эластичное \nприложение" as CS order 30
+
+== Запрос числа ВМ ==
+Caler -> API : 1. vm_num()
+API -> CS : 2. xxx
+CS -> API : 3. xxx
+API -> Caler : 4. '{"status":"OK","vmcount":"3"}'
+
+== Запрос загрузки ресурсов ==
+Caler -> API : 1. vm_util()
+API -> CS : 2. xxx
+CS -> API : 3. xxx
+API -> Caler : 4. '{"status":"OK","vm1":"40%","vm2":"30%","vm3":"76%"}'
+
+== Запрос изменения ресурсов ==
+Caler -> API : 1. vm_change(-2)
+API -> CS : 2. xxx
+CS -> API : 3. xxx
+API -> Caler : 4. '{"status":"OK","vmcount":"1"}'
+@enduml

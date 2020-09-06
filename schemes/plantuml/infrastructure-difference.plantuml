@@ -1,0 +1,27 @@
+@startuml
+skinparam rectanglebordercolor white
+skinparam shadowing false
+skinparam monochrome true
+
+
+rectangle "Традиционная инфраструктура" as Trad {
+  node "Сервер 1" as TradS1 {
+   circle "Задача 1" as TradT1
+  }
+
+  node "Сервер 2" as TradS2 {
+   circle "Задача 2" as TradT2
+  } 
+}
+
+rectangle "Виртуализированная инфраструктура" as Cloud {
+ node "Сервер 1" as CloudS1 {
+  node "Виртуальный\nсервер 1" as Virt1 {
+   circle "Задача 1" as CloudT1
+  }
+  node "Виртуальный\nсервер 2" as Virt2 {
+   circle "Задача 2" as CloudT2
+  }
+ }
+}
+@enduml

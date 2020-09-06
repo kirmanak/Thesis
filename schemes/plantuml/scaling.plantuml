@@ -1,0 +1,33 @@
+@startuml
+skinparam shadowing false
+skinparam rectanglebordercolor white
+skinparam monochrome true
+
+
+rectangle "До масштабирования" as Before {
+  node "Виртуальный\nсервер 1" as BeforeS1 {
+   circle "Ресурсы" as BeforeT1
+  }
+}
+
+rectangle "После масштабирования" as After {
+  rectangle "Горизонтальное масштабирование" as Hor {
+    node "Виртуальный\nсервер 1" as HorAfterS1 {
+     circle "Ресурсы" as HorAfterT1
+    }
+
+    node "Виртуальный\nсервер 2" as HorAfterS2 {
+     circle "Ресурсы" as HorAfterT2
+    }
+  }
+
+  rectangle "Вертикальное масштабирование" as Ver {
+    node "Виртуальный\nсервер 1" as VerAfterS1 {
+     circle "Ресурсы" as VerAfterT1
+     circle "Ресурсы" as VerAfterT2
+    }
+  }
+}
+
+Before -[hidden]-> After
+@enduml

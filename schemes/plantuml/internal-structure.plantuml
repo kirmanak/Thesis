@@ -1,0 +1,38 @@
+@startuml
+skinparam monochrome true
+
+node "Внешний сервис" {
+ [Внешний компонент] as vk
+}
+
+cloud {
+ [Kubernetes API] as ka
+}
+
+cloud {
+ [OpenNebula API] as oa
+}
+
+package "Сервис управления" {
+  [REST API]
+  [Менеджер]
+
+
+  database "СУБД" {
+    frame "БД" {
+      [Параметры подключения]
+    }
+  }
+
+  [Клиентская библиотека]
+}
+
+vk -[hidden]up- oa
+vk<-left->[REST API]
+[REST API]<-left->[Менеджер]
+[Менеджер]<-->[Параметры подключения]
+[Менеджер]<-up->[Клиентская библиотека]
+ka -[hidden]down- oa
+ka<-left->[Клиентская библиотека]
+oa<-left->[Клиентская библиотека]
+@enduml
